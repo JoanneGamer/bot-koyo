@@ -1,0 +1,29 @@
+
+ name:"ban",
+ $if: "old",
+ code: `$ban[$guildID;$mentioned[1];7;$if[$noMentionMessage==;No provisto;$noMentionMessage]]
+$else
+$endif
+ $title[¡Miembro baneado!]
+ $description[<:ban:1097247819246600293> Miembro baneado: <@$mentioned[1]>
+ Moderador: <@$authorID>
+ Razon: $if[$noMentionMessage==;No provisto;$noMentionMessage]
+$else
+$endif
+]
+ $color[#ffffff]
+
+ $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$authorID];<:x2:1097247835608588438> | No puedes prohibir a alguien con el mismo rol más alto.]
+ $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$mentioned[1]]];<:x2:1097247835608588438> | No puedo prohibir a alguien con un rol más alto que el mio.]
+ $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$clientID];<:x2:1097247835608588438> | No puedo prohibir a alguien con el mismo rol más alto que el mío]
+ $onlyIf[$mentioned[1]!=$ownerID;<:x2:1097247835608588438> | No puedes prohibir al propietario del servidor]
+ $onlyIf[$mentioned[1]!=$authorID;<:x2:1097247835608588438> | Estoy seguro de que no quieres hacer eso.]
+ $onlyIf[$mentioned[1]!=$clientID;<:x2:1097247835608588438> | No puedo prohibirme.]
+ $onlyIf[$isMentioned[$mentioned[1]]==true;<:x2:1097247835608588438> | Necesitas mencionar a alguien a quien quieres que prohíba]
+ $onlyIf[$hasPerms[$guildID;$authorID;banmembers]==true;<:x2:1097247835608588438> | No tienes permisos \`BAN\`]
+ $onlyClientPerms[banmembers;<:x2:1097247835608588438> | No tengo permisos \`BAN\`]
+$onlyif[$getglobaluservar[blacklist]==false;He detectado que usted esta en la blacklist del bot por la siguiente razon
+razon: **$getglobaluservar[rblacklist]**
+Si crees que fue un error comunicate con un **administrador**.]
+`
+}]
