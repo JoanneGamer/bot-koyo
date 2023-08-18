@@ -13,10 +13,10 @@ const bot = new AoiClient({
         type: "aoi.mongo",
         db: require("aoi.mongo"),
         tables: ["main"],
-        path: "mongodb+srv://Neuss:7LRzH1VB0FMSrdkE@cluster0.q2zrc.mongodb.net/?retryWrites=true&w=majority",
+        path: "",
     }    
 });
-mongoose.connect('mongodb+srv://Neuss:7LRzH1VB0FMSrdkE@cluster0.q2zrc.mongodb.net/?retryWrites=true&w=majority', {
+mongoose.connect('', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
