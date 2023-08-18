@@ -1,0 +1,49 @@
+
+    name: "mute",
+    code: `$giveRole[$guildID;$mentioned;$getServerVar[mute]]
+$title[Mute]
+$description[
+Usuario: <@$mentioned[1]>
+Moderador: <@$authorID>
+Razon: $if[$noMentionMessage==;No provisto;$noMentionMessage]]
+
+ $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$authorID];No puedes mutear a alguien con el mismo rol más alto.]
+ $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$mentioned[1]]];No puedo mutear a alguien con un rol más alto que el mio.]
+ $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$clientID];No puedo mutear a alguien con el mismo rol más alto que el mío]
+ $onlyIf[$mentioned[1]!=$ownerID;No puedes mutear al propietario del servidor]
+ $onlyIf[$mentioned[1]!=$authorID;Estoy seguro de que no quieres hacer eso.]
+ $onlyIf[$mentioned[1]!=$clientID;No puedo mutearme.]
+ $onlyIf[$isMentioned[$mentioned[1]]==true;Necesitas mencionar a alguien a quien quieres que mutee]
+  $onlyIf[$[mute]!=;El rol de mute no se a establecido en este server]
+ $onlyIf[$hasPerms[$guildID;$authorID;ban]==true;No tienes permisos \`ban\`]
+ $onlyClientPerms[ban;No tengo permisos \`ban\`]
+$onlyif[$getglobaluservar[blacklist]==false;He detectado que usted esta en la blacklist del bot por la siguiente razon
+razon: **$getglobaluservar[rblacklist]**
+Si crees que fue un error comunicate con un **administrador**.]
+`
+},{
+    name: "unmute",
+    code: `$takeRole[$guildID;$mentioned[1];$getServerVar[mute]]
+$title[UnMute]
+$description[
+Usuario: <@$mentioned[1]>
+Moderador: <@$authorID>]
+$color[#ffffff]
+ 
+$onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$authorID];No puedes unmutear a alguien con el mismo rol más alto.]
+ $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$mentioned[1]]];No puedo mutear a alguien con un rol más alto que el mio.]
+ $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$clientID];No puedo unmutear a alguien con el mismo rol más alto que el mío]
+ $onlyIf[$mentioned[1]!=$ownerID;No puedes unmutear al propietario del servidor]
+ $onlyIf[$mentioned[1]!=$authorID;Estoy seguro de que no quieres hacer eso.]
+ $onlyIf[$mentioned[1]!=$clientID;No puedo mutearme.]
+ $onlyIf[$isMentioned[$mentioned[1]]==true;Necesitas mencionar a alguien a quien quieres que unmutee]
+ $onlyIf[$Var[mute]!=;El rol de mute no se a establecido en este server]
+ $onlyIf[$hasPerms[$guildID;$authorID;ban]==true;No tienes permisos \`ban\`]
+ $onlyClientPermsrmsrmstPerms[ban;No tengo permisos \`ban\`]
+$onlyif[$getglobaluservar[blacklist]==false;He detectado que usted esta en la blacklist del bot por la siguiente razon
+razon: **$getglobaluservar[rblacklist]**
+Si crees que fue un error comunicate con un **administrador**.]
+
+
+`
+}]

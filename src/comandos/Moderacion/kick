@@ -1,0 +1,24 @@
+module.exports = ({ 
+    name: "kick",
+    code: `$kick[$guildID;$mentioned[1];$if[$noMentionMessage==;No provisto;$noMentionMessage]
+
+ $title[¡Miembro expulsado!]
+ $description[Miembro expulsado: <@$mentioned[1]>
+ Moderador: <@$authorID>
+ Razon: $if[$noMentionMessage==;No provisto;$noMentionMessage]
+ $color[#ffffff]
+
+ $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$authorID];No puedes expulsar a alguien con el mismo rol más alto.]
+ $onlyIf[$rolePosition[$highestRole[$clientID]]<$rolePosition[$highestRole[$mentioned[1]]];No puedo expulsar a alguien con un rol más alto que el mio.]
+ $onlyIf[$highestRole[$mentioned[1]]!=$highestRole[$clientID];No puedo expulsar a alguien con el mismo rol más alto que el mío]
+ $onlyIf[$mentioned[1]!=$ownerID;No puedes expulsar al propietario del servidor]
+ $onlyIf[$mentioned[1]!=$authorID;Estoy seguro de que no quieres hacer eso.]
+ $onlyIf[$mentioned[1]!=$clientID;No puedo expulsarme.]
+ $onlyIf[$isMentioned[$mentioned[1]]==true;Necesitas mencionar a alguien a quien quieres que expulse]
+ $onlyIf[$hasPerms[$guildID;$authorID;managemessages]==true;No tienes permisos \`managemessages\`]
+ $onlyClientPerms[managemessages;No tengo permisos \`managemessages\`]
+$onlyif[$getglobaluservar[blacklist]==false;He detectado que usted esta en la blacklist del bot por la siguiente razon
+razon: **$getglobaluservar[rblacklist]**
+Si crees que fue un error comunicate con un **administrador**.]
+`
+})
