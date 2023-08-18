@@ -1,5 +1,5 @@
 module.exports = {
-        token: "MTA3NTU1NDk2MjA2MDM0OTQ5MA.G9-ACJ.M0veK6LesSLiRtMuVi4lG5hoMr6KGamgdScPt8",
+        token: "TOKEN",
         prefix: "$getGuildVar[prefix;$guildID;main]",
     intents:["MessageContent",
     "Guilds", "GuildMessages", "GuildMembers", "GuildBans", "GuildEmojisAndStickers", "GuildIntegrations", "GuildWebhooks", "GuildInvites", "GuildVoiceStates", "GuildPresences", "GuildMessageReactions", "GuildMessageTyping", "DirectMessages", "DirectMessageReactions", "DirectMessageTyping",
